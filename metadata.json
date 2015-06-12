@@ -12,6 +12,6 @@
     { "name": "puppetfinland/apache2", "version_requirement": ">= 0.6.2" },
     { "name": "puppetfinland/mysql", "version_requirement": ">= 0.6.0" },
     { "name": "puppetlabs/concat", "version_requirement": ">= 1.1.2" },
-    { "name": "rmccue/wp", "version_requirement": ">= 1.0.1" }
+    { "name": "puppetfinland/wp", "version_requirement": ">= 1.0.2" }
   ]
 }

@@ -13,7 +13,10 @@ class wordpress::config
     $wptitle,
     $wpadmin,
     $wpadmin_password,
-    $wpadmin_email
+    $wpadmin_email,
+    $plugins,
+    $options,
+    $themes
 
 ) inherits wordpress::params
 {
@@ -45,4 +48,9 @@ class wordpress::config
         admin_email    => $wpadmin_email,
         require        => Class['wordpress::config::mysql'],
     }
+
+    # Install plugins and themes and configure options
+    create_resources('wp::plugin', $plugins)
+    create_resources('wp::option', $options)
+    create_resources('wp::themes', $themes)
 }

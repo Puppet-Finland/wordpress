@@ -15,7 +15,8 @@ class wordpress::install
 
     # Install wp-cli using rmccue/wp module
     class { '::wp':
-        user => $::apache2::params::www_user,
+        location => $::wordpress::params::installdir,
+        user     => $::apache2::params::www_user,
     }
     class { '::wp::cli':
         ensure       => $ensure,
