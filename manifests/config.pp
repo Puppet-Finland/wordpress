@@ -14,6 +14,7 @@ class wordpress::config
     $wpadmin,
     $wpadmin_password,
     $wpadmin_email,
+    $theme,
     $plugins,
     $options,
     $themes
@@ -48,6 +49,12 @@ class wordpress::config
         admin_email    => $wpadmin_email,
         require        => Class['wordpress::config::mysql'],
     }
+
+    wp::theme { $theme:
+        location => $::wordpress::params::installdir, 
+        ensure   => enabled,
+    }
+
 
     # Install plugins and themes and configure options
     create_resources('wp::plugin', $plugins)

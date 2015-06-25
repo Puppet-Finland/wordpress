@@ -34,6 +34,8 @@
 #   Wordpress administrator password. No default value.
 # [*wpadmin_email*]
 #   Wordpress administrator email address. No default value.
+# [*theme*]
+#   Wordpress theme to use. Defaults to 'twentyfourteen'.
 # [*plugins*]
 #   A hash of wp::plugin resources to realize.
 # [*options*]
@@ -83,6 +85,7 @@ class wordpress
     $dbname = 'wordpress',
     $dbuser = 'wpuser',
     $wpadmin = 'admin',
+    $theme = 'twentyfourteen',
     $plugins = {},
     $options = {},
     $themes = {}
@@ -107,6 +110,7 @@ if $manage == 'yes' {
             wpadmin          => $wpadmin,
             wpadmin_password => $wpadmin_password,
             wpadmin_email    => $wpadmin_email,
+            theme            => $theme,
             plugins          => $plugins,
             options          => $options,
             themes           => $themes,
