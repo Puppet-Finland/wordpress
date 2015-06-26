@@ -28,8 +28,4 @@ For details see [params.pp](manifests/params.pp).
 
 # License
 
-While this module is mostly BSD-licensed (see file LICENSE), the
-wp-keys.php.erb file has been taken from
-[another Wordpress Puppet module](https://github.com/hunner/puppet-wordpress)
-that is licensed under the Apache 2.0 license. The file in question is (C) 2013
-Hunter Haugen.
+This module is BSD-licensed. See file LICENSE for details.

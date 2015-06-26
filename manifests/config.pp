@@ -51,8 +51,9 @@ class wordpress::config
     }
 
     wp::theme { $theme:
-        location => $::wordpress::params::installdir, 
         ensure   => enabled,
+        location => $::wordpress::params::installdir,
+        require  => Wp::Site["wordpress-site-${wptitle}"],
     }
 
 

@@ -31,26 +31,23 @@ class wordpress::config::common
         content => template('wordpress/wp-base.php.erb'),
     }
 
-    # This template file contains dynamic content, so we need to upload it
-    # first, then use the uploaded file as a source for the concat::fragment
-    # define. The replace => true ensures that even if the template's contents
-    # changes (as they do on every run), the concat::fragment remains the same.
-    #
-    # This neat trick was adapted from
-    #
-    # <https://github.com/hunner/puppet-wordpress>
-    #
-    file { 'wordpress-wp-keys.php':
-        name    => "${::wordpress::params::config_dir}/wp-keys.php",
-        content => template('wordpress/wp-keys.php.erb'),
-        owner   => $::os::params::adminuser,
-        group   => $::os::params::admingroup,
-        mode    => '0640',
-        replace => false,
+    # Fetch Wordpress secret keys
+    $keys = "${::wordpress::params::config_dir}/wp-keys.php"
+
+    exec { 'wordpress fetch secret keys':
+        command => "echo '<?php' > ${keys} && curl -s https://api.wordpress.org/secret-key/1.1/salt/ >> ${keys}",
+        path    => ['/usr/bin'],
+        unless  => "test -f ${keys}",
+        user    => $::os::params::adminuser,
         require => Class['wordpress::install'],
     }
-    concat::fragment { 'wordpress-wp-keys.php':
-        source  => "${::wordpress::params::config_dir}/wp-keys.php",
-        require => File['wordpress-wp-keys.php'],
+
+    file { 'wordpress-wp-keys.php':
+        path    => "${::wordpress::params::config_dir}/wp-keys.php",
+        owner   => $::os::params::adminuser,
+        group   => $::apache2::params::www_group,
+        mode    => '0640',
+        require => Exec['wordpress fetch secret keys'],
     }
+
 }
