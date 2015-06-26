@@ -49,16 +49,20 @@
 #
 #   ---
 #   classes:
-#    - wordpress
-#    - webserver
-#    - apache2
-#    - mysql
+#     - apache2
+#     - mysql
+#     - wordpress
+#     - wordpress::ldapauth
 #
-#   wordpress::dbpassword: 'secret-password'
+#   # On CentOS 7 Apache2 is not started automatically
+#   apache2::ensure_service: 'running'
+#
+#   # Generic Wordpress settings
+#   wordpress::dbpassword: 'your_db_password'
 #   wordpress::wpadmin: 'admin'
-#   wordpress::wpadmin_password: 'another-secret-password'
+#   wordpress::wpadmin_password: 'your_wp_admin_password'
 #   wordpress::wpadmin_email: 'admin@domain.com'
-#   wordpress::wpurl: 'http://wordpress.domain.com/wordpress'
+#   wordpress::wpurl: 'http://intra.acme.com/wordpress'
 #   wordpress::wptitle: 'Acme Oy Intranet'
 #
 # == Authors
