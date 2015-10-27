@@ -4,7 +4,7 @@ Alias /wordpress /usr/share/wordpress
   AllowOverride Options
   <IfModule mod_authz_core.c>
     # Apache 2.4
-    Require <%= authz_require %>
+    Require <%= @authz_require %>
   </IfModule>
 </Directory>
 
