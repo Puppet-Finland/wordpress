@@ -13,7 +13,7 @@ class wordpress::config::mysql
 {
     mysql::database { 'wordpress':
         ensure            => $ensure,
-        use_root_defaults => 'yes',
+        use_root_defaults => true,
     }
 
     mysql::grant { 'wpuser':
