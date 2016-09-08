@@ -11,7 +11,8 @@
     { "name": "puppetfinland/os", "version_requirement": ">= 0.5.7" },
     { "name": "puppetfinland/apache2", "version_requirement": ">= 0.6.3" },
     { "name": "puppetfinland/mysql", "version_requirement": ">= 0.6.0" },
+    { "name": "puppetfinland/wp", "version_requirement": ">= 1.0.3" },
     { "name": "puppetlabs/concat", "version_requirement": ">= 1.1.2" },
-    { "name": "puppetfinland/wp", "version_requirement": ">= 1.0.3" }
+    { "name": "stahnma/epel", "version_requirement": ">= 1.0.2" }
   ]
 }

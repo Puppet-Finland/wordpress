@@ -8,9 +8,15 @@ class wordpress::install
 
 ) inherits wordpress::params
 {
+    $package_require = $::osfamily ? {
+        'RedHat' => Class['epel'],
+        default  => undef,
+    }
+
     # Install Wordpress
     package { $::wordpress::params::package_name:
-        ensure => $ensure,
+        ensure  => $ensure,
+        require => $package_require,
     }
 
     # Install wp-cli using rmccue/wp module
