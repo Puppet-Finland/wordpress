@@ -41,6 +41,7 @@ class wordpress::config::wpdirauth
     wp::option { 'dirAuthInstitution': value => $institution, }
     wp::option { 'dirAuthLoginScreenMsg': value => $login_screen_msg, }
     wp::option { 'dirAuthChangePassMsg': value => $change_pass_msg, }
+    wp::option { 'dirAuthAutoRegister': value => 1, }
     wp::option { 'dirAuthUseGroups': value => $use_groups, }
     wp::option { 'dirAuthGroups': value => $groups, }
     wp::option { 'dirAuthMarketingSSOID': value => $marketing_ssoid, }
